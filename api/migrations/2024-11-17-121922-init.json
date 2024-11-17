@@ -1,0 +1,919 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateSettings",
+			"op": "set",
+			"key": "tenant",
+			"value": {
+				"inviteExpirationMinutes": 10080
+			}
+		},
+		{
+			"modification": "updateSettings",
+			"op": "set",
+			"key": "content",
+			"value": {
+				"shortDateResponse": true,
+				"useExistsInHasManyFilter": true
+			}
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "contentReferenceTypeEnum",
+			"values": [
+				"example"
+			]
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "user",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "User"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "post",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Post"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "person",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Person"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "content",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Content"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "content_reference",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "ContentReference"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "image",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Image"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "image_metadata",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "ImageMetadata"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "email",
+				"type": "String",
+				"name": "email"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Post",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Post",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "title",
+				"type": "String",
+				"name": "title"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Post",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": true,
+				"columnName": "updated_at",
+				"type": "DateTime",
+				"name": "updatedAt"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "personId",
+				"columnName": "person_id",
+				"nullable": false,
+				"type": "Uuid",
+				"columnType": "uuid"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "updatedAt",
+				"columnName": "updated_at",
+				"nullable": false,
+				"default": "now",
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Content",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Content",
+			"field": {
+				"name": "data",
+				"columnName": "data",
+				"nullable": true,
+				"type": "Json",
+				"columnType": "jsonb"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentReference",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ContentReference",
+			"field": {
+				"name": "type",
+				"columnName": "type",
+				"nullable": true,
+				"type": "Enum",
+				"columnType": "contentReferenceTypeEnum"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "width",
+				"columnName": "width",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "height",
+				"columnName": "height",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "alt",
+				"columnName": "alt",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now",
+			"valueMigrationStrategy": "using"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "fileName",
+				"columnName": "file_name",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "lastModified",
+				"columnName": "last_modified",
+				"nullable": true,
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "fileSize",
+				"columnName": "file_size",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "fileType",
+				"columnName": "file_type",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "User",
+			"owningSide": {
+				"name": "person",
+				"inversedBy": "userPerson",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "person_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "userPerson",
+				"ownedBy": "person",
+				"target": "User",
+				"type": "OneHasOne",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Post",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "author",
+				"target": "User",
+				"inversedBy": "posts",
+				"joiningColumn": {
+					"columnName": "author_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "posts",
+				"target": "Post",
+				"ownedBy": "author"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Post",
+			"owningSide": {
+				"name": "content",
+				"inversedBy": "postContent",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "postContent",
+				"ownedBy": "content",
+				"target": "Post",
+				"type": "OneHasOne",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Post",
+			"owningSide": {
+				"name": "image",
+				"inversedBy": "postImage",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "image_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "postImage",
+				"ownedBy": "image",
+				"type": "OneHasMany",
+				"target": "Post"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ContentReference",
+			"owningSide": {
+				"name": "content",
+				"inversedBy": "references",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "content_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "references",
+				"ownedBy": "content",
+				"type": "OneHasMany",
+				"target": "ContentReference"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Image",
+			"owningSide": {
+				"name": "meta",
+				"inversedBy": "image",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "ImageMetadata",
+				"joiningColumn": {
+					"columnName": "meta_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "image",
+				"ownedBy": "meta",
+				"target": "Image",
+				"type": "OneHasOne",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "tenant_person",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					},
+					"createdAt": {
+						"name": "createdAt",
+						"type": "DateTime",
+						"columnType": "timestamptz",
+						"nullable": false,
+						"columnName": "created_at",
+						"default": "now"
+					},
+					"identityId": {
+						"name": "identityId",
+						"columnName": "identity_id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					},
+					"email": {
+						"name": "email",
+						"columnName": "email",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"name": {
+						"name": "name",
+						"columnName": "name",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"otpUri": {
+						"name": "otpUri",
+						"columnName": "otp_uri",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"otpActivatedAt": {
+						"name": "otpActivatedAt",
+						"columnName": "otp_activated_at",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"idpOnly": {
+						"name": "idpOnly",
+						"columnName": "idp_only",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"roles": {
+						"name": "roles",
+						"columnName": "roles",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"person": {
+						"name": "person",
+						"inversedBy": "tenantPerson",
+						"nullable": true,
+						"type": "OneHasOne",
+						"target": "Person",
+						"joiningColumn": {
+							"columnName": "person_id",
+							"onDelete": "restrict"
+						}
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "TenantPerson",
+				"view": {
+					"sql": "\n\tSELECT\n\t\ttenant_person.id,\n\t\ttenant_person.email,\n\t\ttenant_person.name,\n\t\ttenant_person.identity_id,\n\t\tcontent_person.id AS person_id,\n\t\tSTRING_AGG(DISTINCT project_membership.role, ', ') AS roles\n\tFROM person AS content_person\n\t\tFULL OUTER JOIN tenant.person AS tenant_person ON tenant_person.id = content_person.person_id\n\t\tLEFT JOIN tenant.identity AS tenant_identity ON tenant_person.identity_id = tenant_identity.id\n\t\tLEFT JOIN tenant.project_membership AS project_membership ON tenant_identity.id = project_membership.identity_id\n\tWHERE tenant_person.id IS NOT NULL\n\tGROUP BY tenant_person.id, content_person.id\n"
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "Person",
+			"relation": {
+				"name": "tenantPerson",
+				"ownedBy": "person",
+				"target": "TenantPerson",
+				"type": "OneHasOne",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "Person",
+			"unique": {
+				"fields": [
+					"personId"
+				]
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/public",
+					"value": {
+						"variables": {},
+						"entities": {
+							"Post": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"title": true,
+										"updatedAt": true,
+										"author": true,
+										"content": true,
+										"image": true
+									}
+								},
+								"predicates": {}
+							},
+							"User": {
+								"operations": {
+									"read": {
+										"name": true
+									}
+								},
+								"predicates": {}
+							},
+							"TenantPerson": {
+								"operations": {
+									"read": {
+										"createdAt": false,
+										"identityId": false,
+										"email": false,
+										"name": false,
+										"otpUri": false,
+										"otpActivatedAt": false,
+										"idpOnly": false,
+										"roles": false,
+										"person": false
+									}
+								},
+								"predicates": {}
+							},
+							"Person": {
+								"operations": {
+									"read": {
+										"createdAt": false,
+										"personId": false,
+										"updatedAt": false,
+										"tenantPerson": false,
+										"userPerson": false
+									}
+								},
+								"predicates": {}
+							}
+						},
+						"stages": "*"
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/authenticated",
+					"value": {
+						"variables": {},
+						"entities": {
+							"Post": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"title": true,
+										"updatedAt": true,
+										"author": true,
+										"content": true,
+										"image": true
+									},
+									"create": {
+										"createdAt": true,
+										"title": true,
+										"updatedAt": true,
+										"author": true,
+										"content": true,
+										"image": true
+									},
+									"update": {
+										"createdAt": false,
+										"title": true,
+										"updatedAt": false,
+										"author": true,
+										"content": true,
+										"image": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"User": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"email": true,
+										"posts": true,
+										"person": true
+									},
+									"update": {
+										"name": true,
+										"email": true
+									}
+								},
+								"predicates": {}
+							},
+							"Image": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"alt": true,
+										"meta": true,
+										"postImage": true
+									},
+									"create": {
+										"createdAt": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"alt": true,
+										"meta": true,
+										"postImage": true
+									},
+									"update": {
+										"createdAt": true,
+										"url": true,
+										"width": true,
+										"height": true,
+										"alt": true,
+										"meta": true,
+										"postImage": true
+									}
+								},
+								"predicates": {}
+							},
+							"ImageMetadata": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"image": true,
+										"fileName": true,
+										"lastModified": true,
+										"fileSize": true,
+										"fileType": true
+									},
+									"create": {
+										"createdAt": true,
+										"image": true,
+										"fileName": true,
+										"lastModified": true,
+										"fileSize": true,
+										"fileType": true
+									},
+									"update": {
+										"createdAt": true,
+										"image": true,
+										"fileName": true,
+										"lastModified": true,
+										"fileSize": true,
+										"fileType": true
+									}
+								},
+								"predicates": {}
+							},
+							"TenantPerson": {
+								"operations": {
+									"read": {
+										"createdAt": false,
+										"identityId": false,
+										"email": false,
+										"name": false,
+										"otpUri": false,
+										"otpActivatedAt": false,
+										"idpOnly": false,
+										"roles": false,
+										"person": false
+									}
+								},
+								"predicates": {}
+							},
+							"Person": {
+								"operations": {
+									"read": {
+										"createdAt": false,
+										"personId": false,
+										"updatedAt": false,
+										"tenantPerson": false,
+										"userPerson": false
+									}
+								},
+								"predicates": {}
+							}
+						},
+						"stages": "*"
+					}
+				}
+			]
+		}
+	]
+}
